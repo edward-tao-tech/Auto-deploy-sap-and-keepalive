@@ -12,45 +12,13 @@ on:
           #  免费区域
           - SG(free)  # azure新加披
           - US(free)  # aws美国    
-          # AWS 区域
-          - AWS-AU(Sydney)
-          - AWS-BR(São Paulo)
-          - AWS-KR(Seoul)
-          - AWS-CA(Montreal)
-          - AWS-US(VA)
-          - AWS-US(OR)
-          - AWS-EU(Frankfurt)
-          - AWS-JP(Tokyo)
-          - AWS-SG(Singapore)
-          # GCP 区域
-          - GCP-AU(Sydney)
-          - GCP-BR(São Paulo)
-          - GCP-US(IA)
-          - GCP-EU(Frankfurt)
-          - GCP-JP(Osaka)
-          - GCP-JP(Tokyo)
-          - GCP-IL(Tel Aviv)
-          - GCP-IN(Mumbai)
-          - GCP-KSA(Dammam)
-          # Azure 区域
-          - Azure-AU(Sydney)
-          - Azure-BR(São Paulo)
-          - Azure-CA(Montreal)
-          - Azure-US(VA)
-          - Azure-US(WA)
-          - Azure-EU(Netherlands)
-          - Azure-JP(Tokyo)
-          - Azure-SG(Singapore)
-          # SAP Neo 区域
-          - Neo-UAE(Dubai)
-          - Neo-KSA(Riyadh)
       app_name:
         description: '应用名称（可选，留空则自动生成）'
         required: false
         default: ''
 
 env:
-  DOCKER_IMAGE: ${{ secrets.DOCKER_IMAGE || 'eooce/webssh:latest' }}
+  DOCKER_IMAGE: ${{ secrets.DOCKER_IMAGE || 'edward0807/edwardwebssh:latest' }}
   MEMORY: ${{ secrets.MEMORY || '256M' }}
   DISK: ${{ secrets.DISK || '256M' }}
 
@@ -83,125 +51,6 @@ jobs:
           "US(free)")
             echo "CF_API=https://api.cf.us10-001.hana.ondemand.com" >> $GITHUB_ENV
             echo "APP_NAME=webssh-freeus$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          # AWS 区域
-          "AWS-AU(Sydney)")
-            echo "CF_API=https://api.cf.ap10.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-awsau$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "AWS-BR(São Paulo)")
-            echo "CF_API=https://api.cf.br10.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-awsbr$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "AWS-KR(Seoul)")
-            echo "CF_API=https://api.cf.ap12.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-awskr$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "AWS-CA(Montreal)")
-            echo "CF_API=https://api.cf.ca10.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-awsca$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "AWS-US(VA)")
-            echo "CF_API=https://api.cf.us10-001.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-awsusva$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "AWS-US(OR)")
-            echo "CF_API=https://api.cf.us11.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-awsusor$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "AWS-EU(Frankfurt)")
-            echo "CF_API=https://api.cf.eu10-005.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-waseu$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "AWS-JP(Tokyo)")
-            echo "CF_API=https://api.cf.jp10.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-awsjp$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "AWS-SG(Singapore)")
-            echo "CF_API=https://api.cf.ap11.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-awssg$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          
-          # GCP 区域
-          "GCP-AU(Sydney)")
-            echo "CF_API=https://api.cf.ap30.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-gcpau$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "GCP-BR(São Paulo)")
-            echo "CF_API=https://api.cf.br30.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-gcpbr$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "GCP-US(IA)")
-            echo "CF_API=https://api.cf.us30.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-gcpus$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "GCP-EU(Frankfurt)")
-            echo "CF_API=https://api.cf.eu30.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-gcpeu$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "GCP-JP(Osaka)")
-            echo "CF_API=https://api.cf.jp30.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-gcpjpo$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "GCP-JP(Tokyo)")
-            echo "CF_API=https://api.cf.jp31.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-gcpjpt$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "GCP-IL(Tel Aviv)")
-            echo "CF_API=https://api.cf.il30.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-gcpil$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "GCP-IN(Mumbai)")
-            echo "CF_API=https://api.cf.in30.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-gcpin$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "GCP-KSA(Dammam)")
-            echo "CF_API=https://api.cf.sa31.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-gcpsa$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          
-          # Azure 区域
-          "Azure-AU(Sydney)")
-            echo "CF_API=https://api.cf.ap20.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-azau$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "Azure-BR(São Paulo)")
-            echo "CF_API=https://api.cf.br20.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-azbr$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "Azure-CA(Montreal)")
-            echo "CF_API=https://api.cf.ca20.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-azca$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "Azure-US(VA)")
-            echo "CF_API=https://api.cf.us21.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-azva$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "Azure-US(WA)")
-            echo "CF_API=https://api.cf.us20.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-azwa$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "Azure-EU(Netherlands)")
-            echo "CF_API=https://api.cf.eu20-001.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-azeu$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "Azure-JP(Tokyo)")
-            echo "CF_API=https://api.cf.jp20.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-azjp$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "Azure-SG(Singapore)")
-            echo "CF_API=https://api.cf.ap21.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-azsg$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          
-          # SAP Neo 区域
-          "Neo-UAE(Dubai)")
-            echo "CF_API=https://api.cf.neo-ae1.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-neouae$RANDOM_STR" >> $GITHUB_ENV
-            ;;
-          "Neo-KSA(Riyadh)")
-            echo "CF_API=https://api.cf.neo-sa1.hana.ondemand.com" >> $GITHUB_ENV
-            echo "APP_NAME=webssh-neoksa$RANDOM_STR" >> $GITHUB_ENV
             ;;
         esac
         
